@@ -5,7 +5,9 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDex
+import com.base.share_data.ShareSparse
 import com.jushi.library.base.BaseApplication
+import com.jushi.library.share_data.user.User
 import com.jushi.library.utils.ToastUtil
 
 class BridgeApplication : BaseApplication(), Application.ActivityLifecycleCallbacks {
@@ -21,6 +23,17 @@ class BridgeApplication : BaseApplication(), Application.ActivityLifecycleCallba
         if (getUIPName(this) == packageName) {
             registerActivityLifecycleCallbacks(this)
         }
+        val user = User()
+        user.id = "6"
+        user.psd = "admin123"
+        user.email = "wangyufei@mobilecpx.com"
+//        user.email = "wangyufei@qq.com"
+        user.city = "ChengDu"
+        user.userName = "wangyufei@mobilecpx.com"
+        user.localLg = "ar_IL"
+        user.isLogin = true
+        user.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNTQ2ODIzMTAwfQ.TI9-QAtar-9cQ4lvIkJXF_mf_bSRkpJ6ZKAjCKULL_E"
+        ShareSparse.putValue(ShareSparse.USER_CLS, user)
     }
 
     override fun attachBaseContext(base: Context?) {
