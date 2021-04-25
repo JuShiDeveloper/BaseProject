@@ -32,8 +32,9 @@ class BridgeApplication : BaseApplication(), Application.ActivityLifecycleCallba
         user.userName = "wangyufei@mobilecpx.com"
         user.localLg = "ar_IL"
         user.isLogin = true
-        user.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNTQ2ODIzMTAwfQ.TI9-QAtar-9cQ4lvIkJXF_mf_bSRkpJ6ZKAjCKULL_E"
-        ShareSparse.putValue(ShareSparse.USER_CLS, user)
+        user.token =
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNTQ2ODIzMTAwfQ.TI9-QAtar-9cQ4lvIkJXF_mf_bSRkpJ6ZKAjCKULL_E"
+        ShareSparse.putValue(ShareSparse.USER_CLS, user, true)
     }
 
     override fun attachBaseContext(base: Context?) {
