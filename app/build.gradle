@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId applicationIds
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode versionCodes.toInteger()
+        versionName versionNames
+        multiDexEnabled true
+
+        ndk {
+            //abiFilters 'armeabi' //,'armeabi-v7a','x86','arm64-v8a','x86_64'
+        }
+    }
+
+    dataBinding {
+        //noinspection DataBindingWithoutKapt
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+//            jniLibs.srcDirs = ['src/main/jniLibs']
+            res.srcDirs = ['src/main/res']
+        }
+    }
+//    packagingOptions {
+//        doNotStrip "*/armeabi/*.so"
+//    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../bridge.jks")
+            storePassword "ibatbridge"
+            keyAlias "bridge"
+            keyPassword "ibatbridge"
+        }
+
+        debug {
+            storeFile file("../bridge.jks")
+            storePassword "ibatbridge"
+            keyAlias "bridge"
+            keyPassword "ibatbridge"
+        }
+    }
+
+    buildTypes {
+        release {
+            //buildConfigField "cn.longmaster.health.app.HConfig.Server", "SERVER", "cn.longmaster.health.app.HConfig.Server.BEIJING"
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            //buildConfigField "cn.longmaster.health.app.HConfig.Server", "SERVER", "cn.longmaster.health.app.HConfig.Server.TEST_BEIJING"
+            signingConfig signingConfigs.debug
+            debuggable true
+            zipAlignEnabled false
+        }
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.all { output ->
+                outputFileName = "bridge_v${defaultConfig.versionName}_release.apk"
+            }
+        } else {
+            variant.outputs.all { output ->
+                outputFileName = "bridge_v${defaultConfig.versionName}_debug.apk"
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':Library')
+    implementation project(':home')
+
+
+}

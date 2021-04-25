@@ -1,0 +1,31 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 17,
+            targetSdkVersion : 26
+    ]
+
+    dependencies = [
+            "support-v7"       : "com.android.support:appcompat-v7:28.+",
+            "support-v4"       : "com.android.support:support-v4:28.0.0",
+            "design"           : "com.android.support:design:27.0.2",
+            "recyclerview"     : "com.android.support:recyclerview-v7:28.0.0",
+            "kotlin"           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "multidex"         : 'com.android.support:multidex:1.0.1',
+            "glide"            : 'com.github.bumptech.glide:glide:4.8.0',
+            "fastjson"         : 'com.alibaba:fastjson:1.2.47',
+            /*rxjava*/
+            "rxjava"           : 'io.reactivex:rxjava:latest.integration',
+            /*数据库*/
+            "greenDao"         : 'org.greenrobot:greendao:3.2.0',
+            /*内存检测*/
+            "debugleakcanary"  : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+            "releaseleakcanary": 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4',
+            /*鲁班图片压缩*/
+            "luban-compression": 'top.zibin:Luban:1.1.7',
+            "nineoldandroids": 'com.nineoldandroids:library:2.4.0',
+            "okhttp3": 'com.squareup.okhttp3:okhttp:4.9.0',
+            "Java-WebSocket": 'org.java-websocket:Java-WebSocket:1.4.0',
+    ]
+}
