@@ -5,8 +5,8 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDex
-import com.base.share_data.ShareSparse
 import com.jushi.library.base.BaseApplication
+import com.jushi.library.share_data.ShareSparse
 import com.jushi.library.share_data.user.User
 import com.jushi.library.utils.ToastUtil
 

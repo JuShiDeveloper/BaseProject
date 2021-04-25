@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.alibaba.fastjson.JSONObject;
-import com.base.share_data.ShareSparse;
 import com.jushi.library.base.BaseApplication;
 import com.jushi.library.dao.DaoMaster;
 import com.jushi.library.dao.DaoSession;
 import com.jushi.library.dao.ShareDataDao;
+import com.jushi.library.share_data.ShareSparse;
 import com.jushi.library.share_data.user.User;
 
 
